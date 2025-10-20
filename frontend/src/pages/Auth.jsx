@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
-  signInWithPopup // Import signInWithPopup
+  signInWithPopup
 } from "firebase/auth";
 // Import auth AND googleProvider
 import { auth, googleProvider } from '../firebase'; 
@@ -13,6 +14,7 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Initialize the hook
 
   // Email/Password submit handler
   const handleAuth = async (e) => {
@@ -29,12 +31,12 @@ const Auth = () => {
         // Sign Up logic
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         console.log("Signed up successfully:", userCredential.user);
-        // You can redirect the user or update the UI here
+        navigate('/dashboard'); // Redirect on sign up
       } else {
         // Login logic
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log("Logged in successfully:", userCredential.user);
-        // You can redirect the user or update the UI here
+        navigate('/dashboard'); // Redirect on login
       }
     } catch (err) {
       setError(err.message.replace('Firebase: ', '')); // Display a cleaner error message
@@ -47,7 +49,7 @@ const Auth = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       console.log("Google Sign-In successful:", result.user);
-      // You can redirect the user or update UI here
+      navigate('/dashboard'); // Redirect on Google sign in
     } catch (err) {
       setError(err.message.replace('Firebase: ', ''));
     }

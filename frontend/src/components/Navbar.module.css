@@ -71,3 +71,21 @@
     background-image: linear-gradient(to right, #1D4ED8, #6D28D9); /* blue-700 to violet-700 */
     transform: scale(1.05);
   }
+  /* ... (all your existing styles for .navbar, .logoLink, etc.) ... */
+
+.logoutButton {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    color: #CBD5E1; /* slate-300 */
+    background-color: transparent;
+    border: 1px solid #475569; /* slate-600 */
+    padding: 0.4rem 1.25rem; /* A bit smaller than sign up */
+    border-radius: 0.5rem; /* 8px */
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .logoutButton:hover {
+    background-color: #1E293B; /* slate-800 */
+    color: white;
+  }

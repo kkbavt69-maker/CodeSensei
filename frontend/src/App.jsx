@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
+import Dashboard from './pages/Dashboard'; // 1. Import Dashboard
 
 function App() {
   return (
@@ -14,8 +15,12 @@ function App() {
         {/* Routes that use the main Layout (with Navbar/Footer) */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} /> {/* 2. Add this route */}
           {/* Add other pages that need the layout here in the future */}
-          {/* e.g., <Route path="/dashboard" element={<Dashboard />} /> */}
+          {/* e.g., 
+          <Route path="/code-review" element={<CodeReview />} /> 
+          <Route path="/bug-tester" element={<BugTester />} /> 
+          */}
         </Route>
       </Routes>
     </Router>
@@ -23,4 +28,3 @@ function App() {
 }
 
 export default App;
-
