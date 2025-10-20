@@ -1,0 +1,138 @@
+.container {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .headerIcon {
+    height: 5rem;
+    width: 5rem;
+    margin: 0 auto 1.5rem auto;
+    padding: 1rem; /* --- Enhanced --- */
+    box-sizing: border-box; /* --- Enhanced (to include padding in size) --- */
+    background-color: #1E293B; /* --- Enhanced (slate-800) --- */
+    border-radius: 50%; /* --- Enhanced (make it circular) --- */
+    border: 1px solid #334155; /* --- Enhanced (slate-700) --- */
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+  }
+  
+  .subtitle {
+    font-size: 1.125rem;
+    color: #CBD5E1; /* slate-300 */
+    margin-top: 0.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .form {
+    background-color: rgba(30, 41, 59, 0.5); /* --- Enhanced (slate-800/50) --- */
+    backdrop-filter: blur(4px); /* --- Enhanced (glass effect) --- */
+    padding: 2.5rem; /* --- Enhanced (more padding) --- */
+    border-radius: 0.75rem;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* --- Enhanced (shadow) --- */
+  }
+  
+  .formGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #CBD5E1; /* slate-300 */
+    margin-bottom: 0.5rem;
+  }
+  
+  .select, .textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    background-color: #0F172A; /* slate-900 */
+    border: 1px solid #475569; /* slate-600 */
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Menlo', 'monospace'; /* Monospaced font for code */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* --- Enhanced --- */
+  }
+  
+  .select {
+    font-family: 'Inter', sans-serif; /* Use regular font for select */
+  }
+  
+  .select:focus, .textarea:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* --- Enhanced (softer glow) --- */
+  }
+  
+  .textarea {
+    min-height: 300px;
+    resize: vertical;
+  }
+  
+  .submitButton {
+    width: 100%;
+    background-image: linear-gradient(to right, #2563EB, #7C3AED);
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* --- Enhanced (changed from 0.3s to all) --- */
+  }
+  
+  .submitButton:hover {
+    background-image: linear-gradient(to right, #1D4ED8, #6D28D9);
+    transform: scale(1.03) translateY(-2px); /* --- Enhanced (add lift) --- */
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25); /* --- Enhanced (add glow) --- */
+  }
+  
+  .reviewOutput {
+    margin-top: 3rem;
+    background-color: #020617; /* slate-950 */
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid #334155;
+    border-top: 3px solid #3B82F6; /* --- Enhanced (prominent top border) --- */
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.1); /* --- Enhanced (faint glow) --- */
+  }
+  
+  .outputTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.75rem;
+    
+    /* --- Enhanced (gradient title) --- */
+    background-image: linear-gradient(to right, #60A5FA, #8B5CF6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .preformattedText {
+    background-color: transparent;
+    color: #E2E8F0; /* slate-200 */
+    white-space: pre-wrap; /* Allows text to wrap */
+    word-wrap: break-word;
+    font-family: 'Menlo', 'monospace';
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }

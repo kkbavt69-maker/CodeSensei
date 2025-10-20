@@ -39,7 +39,7 @@ const Dashboard = () => {
         <DashboardCard 
           title="Code Optimization"
           imgName="feature-optimize.png"
-          linkTo="/optimize" // We will create this page later
+          linkTo="/codeOptimizer" // We will create this page later
         />
       </div>
     </div>
