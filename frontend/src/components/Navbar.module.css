@@ -1,0 +1,73 @@
+.navbar {
+    background-color: #0F172A; /* slate-900 */
+    padding: 1rem 0;
+    border-bottom: 1px solid #334155; /* slate-700/50 */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .logoLink {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
+    text-decoration: none;
+  }
+  
+  .logoImage {
+    height: 2.5rem; /* 40px */
+    width: 2.5rem; /* 40px */
+  }
+  
+  .logoText {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 800;
+    background-image: linear-gradient(to right, #60A5FA, #8B5CF6); /* blue-400 to violet-500 */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .navLinks {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* 24px */
+  }
+  
+  .navLink {
+    font-size: 1.125rem; /* 18px */
+    color: #CBD5E1; /* slate-300 */
+    transition: color 0.3s;
+  }
+  
+  .navLink:hover {
+    color: #FFF;
+    text-decoration: none;
+  }
+  
+  .signUpButton {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    color: white;
+    background-image: linear-gradient(to right, #2563EB, #7C3AED); /* blue-600 to violet-600 */
+    padding: 0.5rem 1.25rem; /* 8px 20px */
+    border-radius: 0.5rem; /* 8px */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  
+  .signUpButton:hover {
+    background-image: linear-gradient(to right, #1D4ED8, #6D28D9); /* blue-700 to violet-700 */
+    transform: scale(1.05);
+  }

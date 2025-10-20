@@ -1,0 +1,62 @@
+.aboutSection {
+    padding: 6rem 0; /* py-24 */
+    background-color: #0F172A; /* bg-slate-900 */
+  }
+  
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    
+    /* Flexbox setup */
+    display: flex;
+    flex-direction: column; /* Default: stacked */
+    align-items: center;
+    gap: 3rem; /* gap-12 */
+  }
+  
+  /* On medium screens, switch to side-by-side */
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row; /* md:flex-row */
+      justify-content: space-between;
+    }
+  }
+  
+  .textContent {
+    flex-basis: 50%; /* md:w-1/2 */
+  }
+  
+  .imageContent {
+    flex-basis: 50%; /* md:w-1/2 */
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700;
+    margin-bottom: 1.5rem; /* mb-6 */
+  }
+  
+  .titleGradient {
+    background-image: linear-gradient(to right, #60A5FA, #8B5CF6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .text {
+    font-size: 1.125rem; /* text-lg */
+    color: #CBD5E1; /* text-slate-300 */
+    line-height: 1.75; /* leading-relaxed */
+    margin-bottom: 1rem;
+  }
+  
+  .teamImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    border: 1px solid #334155; /* ring-1 ring-slate-700/50 */
+  }

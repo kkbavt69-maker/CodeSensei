@@ -1,0 +1,122 @@
+.authPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0F172A; /* slate-900 */
+    padding: 1rem;
+  }
+  
+  .authContainer {
+    width: 100%;
+    max-width: 28rem; /* 448px (max-w-md) */
+  }
+  
+  .authBox {
+    background-color: rgba(30, 41, 59, 0.5); /* bg-slate-800/50 */
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(51, 65, 85, 0.5); /* border-slate-700/50 */
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1); /* shadow-2xl shadow-blue-500/10 */
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 2rem; /* p-8 */
+  }
+  
+  .title {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    margin-bottom: 0.5rem; /* mb-2 */
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #94A3B8; /* slate-400 */
+    margin-bottom: 2rem; /* mb-8 */
+  }
+  
+  .formGroup {
+    margin-bottom: 1rem; /* mb-4 */
+  }
+  .formGroupLast {
+    margin-bottom: 1.5rem; /* mb-6 */
+  }
+  
+  .label {
+    display: block;
+    color: #CBD5E1; /* slate-300 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.5rem; /* mb-2 */
+  }
+  
+  .input {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    background-color: rgba(51, 65, 85, 0.5); /* bg-slate-700/50 */
+    border: 1px solid #475569; /* border-slate-600 */
+    border-radius: 0.5rem; /* rounded-lg */
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .input::placeholder {
+    color: #94A3B8; /* placeholder-slate-400 */
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 2px #3B82F6; /* ring-2 ring-blue-500 */
+  }
+  
+  .error {
+    background-color: rgba(239, 68, 68, 0.2); /* bg-red-500/20 */
+    color: #F87171; /* text-red-400 */
+    text-align: center;
+    font-size: 0.875rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .submitButton {
+    width: 100%;
+    background-image: linear-gradient(to right, #2563EB, #7C3AED);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background-image: linear-gradient(to right, #1D4ED8, #6D28D9);
+    transform: scale(1.05);
+  }
+  
+  .toggleText {
+    text-align: center;
+    color: #94A3B8; /* slate-400 */
+    margin-top: 1.5rem; /* mt-6 */
+  }
+  
+  .toggleButton {
+    font-weight: 600; /* font-semibold */
+    color: #60A5FA; /* text-blue-400 */
+    margin-left: 0.5rem; /* ml-2 */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: inherit; /* Inherit font size from parent <p> */
+  }
+  
+  .toggleButton:hover {
+    color: #93C5FD; /* hover:text-blue-300 */
+    text-decoration: underline;
+  }
