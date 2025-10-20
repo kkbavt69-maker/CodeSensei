@@ -120,3 +120,53 @@
     color: #93C5FD; /* hover:text-blue-300 */
     text-decoration: underline;
   }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94A3B8; /* slate-400 */
+    margin: 1.5rem 0; /* my-6 */
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #475569; /* slate-600 */
+  }
+  
+  .divider span {
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .googleButton {
+    width: 100%;
+    background-color: #FFF; /* White background */
+    color: #1E293B; /* slate-800 for text color */
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #CBD5E1; /* slate-300 border */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem; /* Increased gap for icon */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* subtle shadow */
+  }
+  
+  .googleButton:hover {
+    background-color: #F8FAFC; /* Light hover background */
+    border-color: #A0AEC0; /* Slightly darker border on hover */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .googleIcon {
+    height: 1.5rem; /* Size of the Google icon */
+    width: 1.5rem;
+  }
