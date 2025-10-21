@@ -4,35 +4,37 @@ import styles from './Learn.module.css';
 const Learn = () => {
   const [language, setLanguage] = useState('python');
   const [topic, setTopic] = useState('');
-  const [explanation, setExplanation] = useState(''); // This will hold the API response
+  const [explanation, setExplanation] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // 1. Add loading state
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { // 2. Make the function async
     e.preventDefault();
-    // Placeholder logic for now
-    console.log("Submitting for explanation:", { language, topic });
-    const mockExplanation = `--- MOCK EXPLANATION ---\n
-Topic: ${topic} in ${language}
+    setIsLoading(true); // 3. Set loading to true
+    setExplanation(''); // Clear previous explanation
 
-### What is it?
-This is a detailed explanation of what '${topic}' means in the context of ${language}. It covers the core concepts and why it is important for developers to understand.
+    try {
+      // 4. This is the new part: Fetch from your backend
+      const response = await fetch('http://localhost:8080/api/learn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ language, topic }),
+      });
 
-### Example:
-Here is a simple, well-commented code example that demonstrates how to use '${topic}'.
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-\`\`\`${language}
-// Example code for ${topic}
-function example() {
-  console.log("This demonstrates ${topic} in ${language}.");
-}
-\`\`\`
+      const data = await response.json();
+      setExplanation(data.explanation); // 5. Set state with the REAL response
 
-### Key Takeaways:
-1.  First important point about ${topic}.
-2.  Second crucial detail to remember.
-3.  Common pitfalls to avoid when working with ${topic}.
-
---- END MOCK EXPLANATION ---`;
-    setExplanation(mockExplanation);
+    } catch (error) {
+      console.error('Error fetching explanation:', error);
+      setExplanation('Failed to get explanation. Is the backend server running?');
+    } finally {
+      setIsLoading(false); // 6. Set loading to false
+    }
   };
 
   return (
@@ -83,13 +85,22 @@ function example() {
             </div>
         </div>
 
-        <button type="submit" className={styles.submitButton}>
-          Explain This Topic
+        {/* 7. Update button to show loading state */}
+        <button type="submit" className={styles.submitButton} disabled={isLoading}>
+          {isLoading ? 'Explaining...' : 'Explain This Topic'}
         </button>
       </form>
 
-      {/* This is where the API response will be displayed */}
-      {explanation && (
+      {/* 8. Handle the loading state */}
+      {isLoading && (
+        <div className={styles.explanationOutput}>
+          <h2 className={styles.outputTitle}>Explaining...</h2>
+          <p className={styles.preformattedText}>Please wait while the AI generates an explanation.</p>
+        </div>
+      )}
+
+      {/* 9. Show explanation (if not loading) */}
+      {explanation && !isLoading && (
         <div className={styles.explanationOutput}>
           <h2 className={styles.outputTitle}>Explanation</h2>
           <pre className={styles.preformattedText}>{explanation}</pre>

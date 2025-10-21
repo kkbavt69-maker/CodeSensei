@@ -4,13 +4,37 @@ import styles from './CodeReview.module.css';
 const CodeReview = () => {
   const [language, setLanguage] = useState('javascript');
   const [code, setCode] = useState('');
-  const [review, setReview] = useState(''); // This will hold the API response
+  const [review, setReview] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // 1. Add loading state
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { // 2. Make the function async
     e.preventDefault();
-    // Placeholder logic for now
-    console.log("Submitting for review:", { language, code });
-    setReview(`--- MOCK REVIEW ---\nLanguage: ${language}\nYour code has been submitted. The AI is analyzing it...\n1. Good variable naming.\n2. Consider using a 'for...of' loop for better readability.\n3. Function is doing too many things (violates SRP).\n--- END MOCK REVIEW ---`);
+    setIsLoading(true); // 3. Set loading to true
+    setReview(''); // Clear previous review
+
+    try {
+      // 4. This is the new part: Fetch from your backend
+      const response = await fetch('http://localhost:8080/api/review', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ language, code }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setReview(data.review); // 5. Set state with the REAL response
+
+    } catch (error) {
+      console.error('Error fetching code review:', error);
+      setReview('Failed to get review. Is the backend server running?');
+    } finally {
+      setIsLoading(false); // 6. Set loading to false
+    }
   };
 
   return (
@@ -24,6 +48,7 @@ const CodeReview = () => {
       </div>
       
       <form onSubmit={handleSubmit} className={styles.form}>
+        {/* ... (your <select> and <textarea> are unchanged) ... */}
         <div className={styles.formGroup}>
           <label htmlFor="language-select" className={styles.label}>
             Select Language
@@ -58,13 +83,22 @@ const CodeReview = () => {
           />
         </div>
 
-        <button type="submit" className={styles.submitButton}>
-          Review My Code
+        {/* 7. Update button to show loading state */}
+        <button type="submit" className={styles.submitButton} disabled={isLoading}>
+          {isLoading ? 'Analyzing...' : 'Review My Code'}
         </button>
       </form>
 
-      {/* This is where the API response will be displayed */}
-      {review && (
+      {/* 8. Handle the loading state */}
+      {isLoading && (
+        <div className={styles.reviewOutput}>
+          <h2 className={styles.outputTitle}>Analyzing Code...</h2>
+          <p className={styles.preformattedText}>Please wait while the AI reviews your code.</p>
+        </div>
+      )}
+
+      {/* 9. Show review (if not loading) */}
+      {review && !isLoading && (
         <div className={styles.reviewOutput}>
           <h2 className={styles.outputTitle}>Review Results</h2>
           <pre className={styles.preformattedText}>{review}</pre>
