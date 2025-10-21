@@ -1,84 +1,96 @@
+/* frontend/src/components/Hero.module.css */
 .heroSection {
-    background-color: #0F172A; /* slate-900 */
-    color: white;
-    padding: 9rem 0; /* py-36 */
-  }
-  
-  .heroContainer {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    text-align: center;
-  }
-  
+  background-color: #0F172A; /* slate-900 */
+  color: white;
+  padding: 9rem 0; /* py-36 */
+}
+
+.heroContainer {
+  max-width: 1280px;
+  margin: 0 auto; /* Centers the container block itself */
+  padding: 0 1.5rem;
+  text-align: center; /* <<< THIS CENTERS THE TEXT (h1, p) */
+}
+
+.heroTitle {
+  font-size: 3rem; /* text-5xl */
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+/* On medium screens and up, make the font bigger */
+@media (min-width: 768px) {
   .heroTitle {
-    font-size: 3rem; /* text-5xl */
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    font-size: 3.75rem; /* text-6xl */
   }
-  
-  /* On medium screens and up, make the font bigger */
-  @media (min-width: 768px) {
-    .heroTitle {
-      font-size: 3.75rem; /* text-6xl */
-    }
-  }
-  
-  .heroTitleGradient {
-    background-image: linear-gradient(to right, #60A5FA, #8B5CF6); /* blue-400 to violet-500 */
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  
-  .heroSubtitle {
-    font-size: 1.25rem; /* text-xl */
-    color: #CBD5E1; /* slate-300 */
-    margin-bottom: 3rem;
-    max-width: 48rem; /* max-w-3xl */
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.75;
-  }
-  
-  .buttonContainer {
-    display: flex;
-    justify-content: center;
-    gap: 1rem; /* space-x-4 */
-  }
-  
-  /* Base styles for both buttons */
-  .button {
-    font-weight: 700;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1.125rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-  }
-  
-  .primaryButton {
-    composes: button; /* Inherits from .button */
-    background-image: linear-gradient(to right, #2563EB, #7C3AED); /* blue-600 to violet-600 */
-    color: white;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
-  }
-  
-  .primaryButton:hover {
-    background-image: linear-gradient(to right, #1D4ED8, #6D28D9); /* blue-700 to violet-700 */
-    transform: scale(1.05);
-  }
-  
-  .secondaryButton {
-    composes: button; /* Inherits from .button */
-    background-color: transparent;
-    border: 2px solid #475569; /* slate-600 */
-    color: white;
-  }
-  
-  .secondaryButton:hover {
-    background-color: #1E293B; /* slate-800 */
-    border-color: #64748B; /* slate-500 */
-  }
+}
+
+.heroTitleGradient {
+  background-image: linear-gradient(to right, #60A5FA, #8B5CF6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem; /* text-xl */
+  color: #CBD5E1; /* slate-300 */
+  margin-bottom: 3rem;
+  max-width: 48rem; /* max-w-3xl */
+  margin-left: auto; /* Needed to center block with max-width */
+  margin-right: auto;/* Needed to center block with max-width */
+  line-height: 1.75;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center; /* <<< THIS CENTERS THE BUTTONS */
+  gap: 1rem; /* space-x-4 */
+}
+
+/* Base styles for both buttons */
+.button {
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.primaryButton {
+  composes: button;
+  background-image: linear-gradient(to right, #2563EB, #7C3AED);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+  /* Added styles for Link */
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.primaryButton:hover {
+  background-image: linear-gradient(to right, #1D4ED8, #6D28D9);
+  transform: scale(1.05);
+}
+
+.secondaryButton {
+  composes: button;
+  background-color: transparent;
+  border: 2px solid #475569; /* slate-600 */
+  color: white;
+}
+
+.secondaryButton:hover {
+  background-color: #1E293B; /* slate-800 */
+  border-color: #64748B; /* slate-500 */
+}
+
+/* Video Modal Styles */
+.modalOverlay { /* ... */ }
+.modalContent { /* ... */ }
+.closeButton { /* ... */ }
+.videoWrapper { /* ... */ }
+.videoWrapper iframe { /* ... */ }

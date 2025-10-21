@@ -5,15 +5,14 @@ const Learn = () => {
   const [language, setLanguage] = useState('python');
   const [topic, setTopic] = useState('');
   const [explanation, setExplanation] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // 1. Add loading state
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e) => { // 2. Make the function async
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // 3. Set loading to true
-    setExplanation(''); // Clear previous explanation
+    setIsLoading(true);
+    setExplanation('');
 
     try {
-      // 4. This is the new part: Fetch from your backend
       const response = await fetch('http://localhost:8080/api/learn', {
         method: 'POST',
         headers: {
@@ -27,13 +26,13 @@ const Learn = () => {
       }
 
       const data = await response.json();
-      setExplanation(data.explanation); // 5. Set state with the REAL response
+      setExplanation(data.explanation);
 
     } catch (error) {
       console.error('Error fetching explanation:', error);
       setExplanation('Failed to get explanation. Is the backend server running?');
     } finally {
-      setIsLoading(false); // 6. Set loading to false
+      setIsLoading(false);
     }
   };
 
@@ -85,13 +84,11 @@ const Learn = () => {
             </div>
         </div>
 
-        {/* 7. Update button to show loading state */}
         <button type="submit" className={styles.submitButton} disabled={isLoading}>
           {isLoading ? 'Explaining...' : 'Explain This Topic'}
         </button>
       </form>
 
-      {/* 8. Handle the loading state */}
       {isLoading && (
         <div className={styles.explanationOutput}>
           <h2 className={styles.outputTitle}>Explaining...</h2>
@@ -99,7 +96,6 @@ const Learn = () => {
         </div>
       )}
 
-      {/* 9. Show explanation (if not loading) */}
       {explanation && !isLoading && (
         <div className={styles.explanationOutput}>
           <h2 className={styles.outputTitle}>Explanation</h2>

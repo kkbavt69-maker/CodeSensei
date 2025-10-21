@@ -1,60 +1,161 @@
+/* ===========================
+   Dashboard.module.css
+   Final Version — Enhanced Spacing
+   =========================== */
+
+/* ----------- Container ----------- */
 .dashboardContainer {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 0.5rem;
-  }
-  
-  .subtitle {
-    font-size: 1.25rem;
-    color: #CBD5E1; /* slate-300 */
-    margin-bottom: 3rem;
-  }
-  
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: white;
+  transition: all 0.4s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ----------- Title & Subtitle ----------- */
+.title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #60a5fa, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  margin-bottom: 3.5rem;
+  opacity: 0.9;
+  transition: color 0.3s ease;
+}
+
+.subtitle:hover {
+  color: #e2e8f0;
+}
+
+/* ----------- Grid Layout ----------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* --- Increased column gap --- */
+  gap: 3rem 6rem; /* extra spacing: row-gap = 3rem, column-gap = 6rem */
+  /* --- End Change --- */
+  justify-items: center;
+  align-items: stretch;
+  padding: 0 1rem;
+}
+
+/* ----------- Card Styles ----------- */
+.card {
+  background: linear-gradient(160deg, #1e293b, #0f172a);
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  color: white;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+
+  /* Equal dimensions */
+  height: 270px;
+  width: 100%;
+  max-width: 360px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glowing border animation */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, rgba(59, 130, 246, 0.6), rgba(147, 197, 253, 0.3));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Hover animation */
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.35);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* ----------- Card Image ----------- */
+.cardImage {
+  height: 6rem;
+  width: 6rem;
+  margin: 0 auto 1.5rem auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.1) rotate(2deg);
+  filter: drop-shadow(0 0 16px rgba(96, 165, 250, 0.6));
+}
+
+/* ----------- Card Title ----------- */
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.card:hover .cardTitle {
+  color: #93c5fd;
+}
+
+/* ----------- Responsive (Mobile) ----------- */
+@media (max-width: 768px) {
   .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 2rem; /* gap-8 */
+    grid-template-columns: 1fr;
+    gap: 1.75rem; /* Only row gap matters here */
   }
-  
-  /* On smaller screens, stack to 1 column */
-  @media (max-width: 640px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
+
   .card {
-    background-color: #1E293B; /* slate-800 */
-    padding: 2.5rem;
-    border-radius: 0.75rem; /* rounded-xl */
-    border: 1px solid #334155; /* ring-1 ring-slate-700/50 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-    color: white;
+    max-width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
   }
-  
-  .card:hover {
-    transform: translateY(-5px) scale(1.03);
-    border-color: rgba(59, 130, 246, 0.5); /* hover:ring-blue-500/50 */
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.2); /* custom glow effect */
-  }
-  
+
   .cardImage {
-    height: 6rem; /* h-24 */
-    width: 6rem; /* w-24 */
-    margin: 0 auto 1.5rem auto; /* mx-auto mb-6 */
+    height: 5rem;
+    width: 5rem;
   }
-  
-  .cardTitle {
-    font-size: 1.5rem; /* text-2xl */
-    font-weight: 600;
+
+  .title {
+    font-size: 2rem;
   }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+}

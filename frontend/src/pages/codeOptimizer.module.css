@@ -1,153 +1,106 @@
-/* Overall container for the page */
+/* frontend/src/pages/codeOptimizer.module.css */
+/* Consistent container and header styles */
 .container {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 2rem;
-    box-sizing: border-box;
-  }
-  
-  /* --- Header Styles --- */
-  .header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .headerIcon {
-    height: 5rem;
-    width: 5rem;
-    margin: 0 auto 1.5rem auto;
-    padding: 1rem;
-    box-sizing: border-box;
-    background-color: #1E293B; /* slate-800 */
-    border-radius: 50%;
-    border: 1px solid #334155; /* slate-700 */
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
-  }
-  
-  .subtitle {
-    font-size: 1.125rem;
-    color: #CBD5E1; /* slate-300 */
-    margin-top: 0.5rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Bar containing language select and button */
-  .topBar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    gap: 1rem;
-  }
-  
-  .languageSelect {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    background-color: rgba(30, 41, 59, 0.5); /* Glass effect */
-    backdrop-filter: blur(4px);
-    color: #e2e8f0;
-    border: 1px solid #334155;
-    border-radius: 8px;
-    min-width: 250px;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    
-    /* Hides the default browser arrow */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    
-    /* Adds a custom arrow (a white chevron) */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23CBD5E1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 1em;
-    padding-right: 2.5rem; /* Add padding to not overlap arrow */
-  }
-  
-  .languageSelect:focus {
-    border-color: #3b82f6; /* Blue border on focus */
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-  }
-  
-  .submitButton {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    background-image: linear-gradient(to right, #2563EB, #7C3AED);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .submitButton:hover {
-    transform: scale(1.03) translateY(-2px);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
-  }
-  
-  .submitButton:disabled {
-    background-image: none;
-    background-color: #334155;
-    cursor: not-allowed;
-    opacity: 0.7;
-    transform: none;
-    box-shadow: none;
-  }
-  
-  /* Container for the two side-by-side text areas */
-  .codeAreas {
-    display: flex;
-    flex-grow: 1;
-    gap: 1.5rem;
-    width: 100%;
-  }
-  
-  .editorContainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 60vh;
-  }
-  
-  .label {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  
-  .editor {
-    width: 100%;
-    height: 100%;
-    background-color: #020617;
-    color: #e2e8f0;
-    border: 1px solid #334155;
-    border-radius: 8px;
-    padding: 1rem;
-    font-family: 'Menlo', 'monospace';
-    font-size: 0.95rem;
-    line-height: 1.5;
-    resize: none;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .editor:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-  }
-  
-  .outputEditor {
-    background-color: #020617;
-    color: #cbd5e1;
-  }
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  color: #e2e8f0; /* Light text default */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.headerIcon {
+  height: 4.5rem;
+  width: 4.5rem;
+  margin: 0 auto 1rem;
+  padding: 0.8rem;
+  box-sizing: border-box;
+  background-color: #1E293B; /* slate-800, consistent dark background */
+  border-radius: 50%;
+  border: 1px solid #334155; /* slate-700, consistent border */
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.4rem;
+  background: linear-gradient(to right, #60a5fa, #c4b5fd); /* Blue to Violet gradient */
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #cbd5e1; /* slate-300 */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Form Area */
+.form {
+  background: rgba(30, 41, 59, 0.4); /* Glass effect */
+  backdrop-filter: blur(3px);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #334155; /* slate-700 */
+  margin-bottom: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.formGroup { flex: 1 1 200px; }
+.label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #94a3b8; /* slate-400 */ font-size: 0.9rem; text-transform: uppercase; }
+
+.select {
+  width: 100%; box-sizing: border-box; padding: 0.7rem 1rem; border: 1px solid #475569; /* slate-600 */
+  border-radius: 6px; font-size: 1rem; background: #0F172A; /* slate-900 */ color: #e2e8f0;
+  transition: border-color 0.2s; appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23CBD5E1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1em; padding-right: 2.5rem;
+}
+.select:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); } /* Blue focus */
+.select:disabled { background: #1e293b; cursor: not-allowed; opacity: 0.7; }
+
+.submitButton {
+    padding: 0.7rem 1.5rem; background: linear-gradient(135deg, #2563EB, #7C3AED); /* Blue to Violet gradient */
+    color: white; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; min-width: 150px; justify-content: center;
+}
+.submitButton:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); } /* Blue shadow */
+.submitButton:disabled { background: #4b5563; /* greyed out */ cursor: not-allowed; opacity: 0.7; transform: none; box-shadow: none; }
+
+/* Code Editors */
+.codeSection {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem;
+}
+@media (max-width: 800px) { .codeSection { grid-template-columns: 1fr; } }
+.editorContainer { display: flex; flex-direction: column; }
+
+.editor {
+  width: 100%; box-sizing: border-box; padding: 1rem; border: 1px solid #334155; /* slate-700 */
+  border-radius: 8px; font-family: 'Menlo', monospace; font-size: 0.95rem; line-height: 1.6;
+  resize: vertical; background: #020617; /* Darkest bg */ color: #e2e8f0; /* Light text */
+  transition: border-color 0.2s; min-height: 350px;
+}
+.editor:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); } /* Blue focus */
+.editor:disabled { background: #111827; cursor: not-allowed; opacity: 0.6; }
+.outputEditor { background: #0f172a; /* Slightly lighter */ color: #cbd5e1; }
+
+/* Error and Loading */
+.errorMessage { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; padding: 1rem; border-radius: 6px; margin-top: 1rem; font-weight: 500; }
+.loading { display: flex; align-items: center; justify-content: center; gap: 0.8rem; padding: 1rem; background: #1e293b; /* Dark bg for loading */ border: 1px solid #334155; border-radius: 8px; margin-top: 1rem; color: #cbd5e1; }
+.spinner { width: 18px; height: 18px; border: 3px solid transparent; border-top-color: #3b82f6; /* Blue spinner */ border-radius: 50%; animation: spin 1s linear infinite; }
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

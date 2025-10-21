@@ -1,148 +1,48 @@
-.container {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 2rem;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .headerIcon {
-    height: 5rem;
-    width: 5rem;
-    margin: 0 auto 1.5rem auto;
-    padding: 1rem; /* --- Enhanced --- */
-    box-sizing: border-box; /* --- Enhanced (to include padding in size) --- */
-    background-color: #1E293B; /* --- Enhanced (slate-800) --- */
-    border-radius: 50%; /* --- Enhanced (make it circular) --- */
-    border: 1px solid #334155; /* --- Enhanced (slate-700) --- */
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
-  }
-  
-  .subtitle {
-    font-size: 1.125rem;
-    color: #CBD5E1; /* slate-300 */
-    margin-top: 0.5rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .form {
-    background-color: rgba(30, 41, 59, 0.5); /* --- Enhanced (slate-800/50) --- */
-    backdrop-filter: blur(4px); /* --- Enhanced (glass effect) --- */
-    padding: 2.5rem; /* --- Enhanced (more padding) --- */
-    border-radius: 0.75rem;
-    border: 1px solid #334155;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* --- Enhanced (shadow) --- */
-  }
-  
-  .formGroup {
-    margin-bottom: 1.5rem;
-  }
-  
-  .label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #CBD5E1; /* slate-300 */
-    margin-bottom: 0.5rem;
-  }
-  
-  .select, .textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.75rem 1rem;
-    background-color: #0F172A; /* slate-900 */
-    border: 1px solid #475569; /* slate-600 */
-    border-radius: 0.5rem;
-    color: white;
-    font-size: 1rem;
-    font-family: 'Menlo', 'monospace'; /* Monospaced font for code */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* --- Enhanced --- */
-  }
-  
-  .select {
-    font-family: 'Inter', sans-serif; /* Use regular font for select */
-  }
-  
-  .select:focus, .textarea:focus {
-    outline: none;
-    border-color: #3B82F6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* --- Enhanced (softer glow) --- */
-  }
-  
-  .textarea {
-    min-height: 300px;
-    resize: vertical;
-  }
-  
-  .submitButton {
-    width: 100%;
-    background-image: linear-gradient(to right, #2563EB, #7C3AED);
-    color: white;
-    font-weight: 700;
-    font-size: 1.125rem;
-    padding: 0.8rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease; /* --- Enhanced (changed from 0.3s to all) --- */
-  }
-  
-  .submitButton:hover {
-    background-image: linear-gradient(to right, #1D4ED8, #6D28D9);
-    transform: scale(1.03) translateY(-2px); /* --- Enhanced (add lift) --- */
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25); /* --- Enhanced (add glow) --- */
-  }
-  
-  .reviewOutput {
-    margin-top: 3rem;
-    background-color: #020617; /* slate-950 */
-    padding: 2rem;
-    border-radius: 0.75rem;
-    border: 1px solid #334155;
-    border-top: 3px solid #3B82F6; /* --- Enhanced (prominent top border) --- */
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.1); /* --- Enhanced (faint glow) --- */
-  }
-  
-  .outputTitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #334155;
-    padding-bottom: 0.75rem;
-    
-    /* --- Enhanced (gradient title) --- */
-    background-image: linear-gradient(to right, #60A5FA, #8B5CF6);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  
-  .preformattedText {
-    background-color: transparent;
-    color: #E2E8F0; /* slate-200 */
-    white-space: pre-wrap; /* Allows text to wrap */
-    word-wrap: break-word;
-    font-family: 'Menlo', 'monospace';
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-  /* ... (all your existing styles) ... */
+/* frontend/src/pages/CodeReview.module.css */
+/* Consistent container and header styles */
+.container { max-width: 1200px; margin: 3rem auto; padding: 1.5rem; box-sizing: border-box; }
+.header { text-align: center; margin-bottom: 2.5rem; }
+.headerIcon { height: 4.5rem; width: 4.5rem; margin: 0 auto 1rem; padding: 0.8rem; box-sizing: border-box; background-color: #1E293B; border-radius: 50%; border: 1px solid #334155; }
+.title { font-size: 2.2rem; font-weight: 700; color: white; margin-bottom: 0.4rem; background: linear-gradient(to right, #60a5fa, #c4b5fd); -webkit-background-clip: text; color: transparent; }
+.subtitle { font-size: 1.1rem; color: #94a3b8; /* slate-400 */ max-width: 600px; margin: 0 auto; }
 
-.submitButton:disabled {
-    background-image: none;
-    background-color: #334155; /* slate-700 */
-    cursor: not-allowed;
-    opacity: 0.7;
-    transform: none;
-    box-shadow: none;
-  }
+/* Top Bar Styling */
+.topBar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; /* Vertically align items */ margin-bottom: 1.5rem; padding: 1rem 1.5rem; background-color: rgba(30, 41, 59, 0.4); backdrop-filter: blur(3px); border-radius: 8px; border: 1px solid #334155; }
+
+.languageSelect {
+  font-size: 1rem; padding: 0.65rem 0.8rem; background-color: #0F172A; color: #e2e8f0;
+  border: 1px solid #475569; border-radius: 6px; outline: none; flex-grow: 1; /* Allow it to grow */ min-width: 180px; /* Minimum width */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23CBD5E1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat; background-position: right 0.6rem center; background-size: 1em; padding-right: 2.2rem;
+}
+.languageSelect:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
+.languageSelect:disabled { background-color: #334155; cursor: not-allowed; opacity: 0.7; }
+
+/* Base button style (Consistent) */
+.baseButton { padding: 0.65rem 1.2rem; font-size: 0.95rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; white-space: nowrap; }
+.baseButton:disabled { cursor: not-allowed; opacity: 0.6; transform: none; box-shadow: none; }
+
+.submitButton { /* Covers both buttons now */
+  composes: baseButton; background-image: linear-gradient(to right, #2563EB, #7C3AED); color: white;
+}
+.submitButton:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2); }
+
+/* Code Editors (Consistent) */
+.codeAreas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 800px) { .codeAreas { grid-template-columns: 1fr; } }
+.editorContainer { display: flex; flex-direction: column; }
+.label { display: block; font-size: 0.9rem; font-weight: 500; color: #94a3b8; /* Lighter label */ margin-bottom: 0.5rem; text-transform: uppercase; }
+.editor { flex-grow: 1; width: 100%; box-sizing: border-box; padding: 1rem; background-color: #020617; /* Darker editor */ color: #e2e8f0; border: 1px solid #334155; border-radius: 8px; font-family: 'Menlo', 'monospace'; font-size: 0.95rem; line-height: 1.6; resize: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; min-height: 40vh; /* Relative height */ }
+.editor:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
+.editor:disabled { background-color: #1e293b; cursor: not-allowed; opacity: 0.7; }
+.outputEditor { background-color: #0f172a; color: #cbd5e1; }
+
+/* In-line styles from JSX converted to CSS */
+.loadingIndicator { text-align: center; color: #CBD5E1; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: 500; }
+.spinner { width: 16px; height: 16px; border: 2px solid transparent; border-top: 2px solid #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+.errorBox { padding: 1rem; border-radius: 8px; margin-top: 1rem; font-weight: 500; border: 1px solid; }
+.errorBox.warning { background: #fffbeb; border-color: #fbd38d; color: #dd6b20; } /* Yellow warning */
+.errorBox.error { background: #fef2f2; border-color: #feb2b2; color: #c53030; } /* Red error */
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
