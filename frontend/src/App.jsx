@@ -6,8 +6,8 @@ import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import CodeReview from './pages/CodeReview';
 import Learn from './pages/Learn';
-import BugTester from './pages/bugTester'; 
-import CodeOptimizer from './pages/codeOptimizer'; // 1. Import the new page
+import BugTester from './pages/bugTester';     // FRIEND'S PAGE
+import CodeOptimizer from './pages/codeOptimizer'; // FRIEND'S PAGE
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/code-review" element={<CodeReview />} />
           <Route path="/learn" element={<Learn />} />
-          <Route path="/bug-tester" element={<BugTester />} />
-          <Route path="/codeOptimizer" element={<CodeOptimizer />} /> {/* 2. Add the route */}
+          <Route path="/bug-tester" element={<BugTester />} />     {/* FRIEND'S PAGE */}
+          <Route path="/codeOptimizer" element={<CodeOptimizer />} /> {/* FRIEND'S PAGE */}
         </Route>
       </Routes>
     </Router>

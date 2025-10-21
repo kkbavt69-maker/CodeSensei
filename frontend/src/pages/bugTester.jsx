@@ -1,23 +1,9 @@
 import React, { useState } from 'react';
-import styles from './bugTester.module.css'; // Correct CSS import
+import styles from './bugTester.module.css';
 
 // A list of common languages for the dropdown
 const languages = [
-  'JavaScript',
-  'Python',
-  'Java',
-  'C++',
-  'C#',
-  'TypeScript',
-  'PHP',
-  'Swift',
-  'Go',
-  'Kotlin',
-  'Ruby',
-  'Rust',
-  'SQL',
-  'HTML',
-  'CSS',
+  'JavaScript', 'Python', 'Java', 'C++', 'C#', 'TypeScript', 'PHP', 'Swift', 'Go', 'Kotlin', 'Ruby', 'Rust', 'SQL', 'HTML', 'CSS',
 ];
 
 const BugTester = () => {
@@ -25,31 +11,41 @@ const BugTester = () => {
   const [inputCode, setInputCode] = useState('');
   const [fixedCode, setFixedCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleFixBug = () => {
+  const handleFixBug = async () => {
     if (!inputCode.trim() || !language) {
       alert('Please select a language and paste your code.');
       return;
     }
 
     setIsLoading(true);
-    setFixedCode('// Analyzing your code...');
+    setFixedCode('');
+    setError('');
 
-    // --- MOCK API CALL ---
-    setTimeout(() => {
-      const mockFixedCode = `// --- Original ${language} Code ---
-${inputCode}
+    try {
+      const response = await fetch('http://localhost:8080/api/bugtest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code: inputCode, language }), // Sending code and language
+      });
 
-// --- ✨ Code Fixed ✨ ---
-// (Your corrected code would appear here)
-// Example:
-function correctedFunction() {
-  console.log("Bug fixed!");
-}`;
+      if (!response.ok) {
+        throw new Error('Network response was not ok. Is the backend server running?');
+      }
 
-      setFixedCode(mockFixedCode);
+      const data = await response.json();
+      setFixedCode(data.analysis); // The backend returns an 'analysis' property
+
+    } catch (err) {
+      console.error('Error fetching bug analysis:', err);
+      setError(err.message); // Show error in the output box
+      setFixedCode('');
+    } finally {
       setIsLoading(false);
-    }, 2000); // Simulate a 2-second network delay
+    }
   };
 
   return (
@@ -64,7 +60,7 @@ function correctedFunction() {
       </div>
 
       <div className={styles.topBar}>
-        {/* --- CHANGED TO A <select> DROPDOWN --- */}
+        {/* --- Using <select> dropdown --- */}
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
@@ -105,14 +101,14 @@ function correctedFunction() {
 
         <div className={styles.editorContainer}>
           <label htmlFor="output-code" className={styles.label}>
-            Corrected Code
+            Bug Analysis
           </label>
           <textarea
             id="output-code"
             className={`${styles.editor} ${styles.outputEditor}`}
-            value={fixedCode}
+            value={error || fixedCode} // Show error or the analysis
             readOnly
-            placeholder="Your corrected code will appear here..."
+            placeholder="Your bug analysis will appear here..."
             spellCheck="false"
           />
         </div>
