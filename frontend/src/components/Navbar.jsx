@@ -1,96 +1,67 @@
-// import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth'; // 1. Import auth functions
+import { auth } from '../firebase'; // 2. Import auth
+import styles from './Navbar.module.css';
 
-// const Navbar = () => {
-//   return (
-//     <nav className="bg-gray-900 text-white shadow-md">
-//       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-//         {/* Top Left: Logo and Name */}
-//         <a href="#" className="flex items-center space-x-3">
-//           <img src="/src/assets/logo.png" alt="CodeSensei Logo" className="h-10 w-10" />
-//           <span className="text-2xl font-bold text-white">CodeSensei</span>
-//         </a>
+const Navbar = () => {
+  const [user, setUser] = useState(null); // 3. Add state to track user
+  const navigate = useNavigate();
 
-//         {/* Top Right: Links and Buttons */}
-//         <div className="flex items-center space-x-6">
-//           <a href="#about" className="text-gray-300 hover:text-white text-lg">About</a>
-//           <button className="text-lg text-gray-300 hover:text-white">
-//             Login
-//           </button>
-//           <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-lg text-lg transition duration-300">
-//             Sign Up
-//           </button>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// };
+  // 4. Listen for auth changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
 
-// export default Navbar;
-import React from 'react';
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
-import { auth } from '../firebase'; // Assumes firebase.js is in the src directory
-
-const Navbar = ({ user }) => {
-
-  // Function to handle Google Sign-In
-  const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error("Error during Google sign-in:", error);
-    }
-  };
-
-  // Function to handle Sign-Out
-  const handleSignOut = async () => {
+  // 5. Handle logout
+  const handleLogout = async () => {
     try {
       await signOut(auth);
+      navigate('/'); // Redirect to home after logout
     } catch (error) {
-      console.error("Error during sign-out:", error);
+      console.error("Error signing out: ", error);
     }
   };
 
   return (
-    <nav className="bg-gray-900 text-white shadow-md">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Top Left: Logo and Name */}
-        <a href="#" className="flex items-center space-x-3">
-          <img src="/src/assets/logo.png" alt="CodeSensei Logo" className="h-10 w-10" />
-          <span className="text-2xl font-bold text-white">CodeSensei</span>
-        </a>
+    <nav className={styles.navbar}>
+      <div className={styles.navContainer}>
+        {/* Logo and Name */}
+        <Link to="/" className={styles.logoLink}>
+          <img src="/src/assets/logo.png" alt="CodeSensei Logo" className={styles.logoImage} />
+          <span className={styles.logoText}>
+            CodeSensei
+          </span>
+        </Link>
 
-        {/* Top Right: Links and Buttons */}
-        <div className="flex items-center space-x-6">
-          <a href="#about" className="text-gray-300 hover:text-white text-lg">About</a>
+        {/* 6. Conditional Links */}
+        <div className={styles.navLinks}>
+          <a href="/#about" className={styles.navLink}>About</a>
           
-          {/* Conditional rendering based on user login state */}
           {user ? (
-            <div className="flex items-center space-x-4">
-              <img 
-                src={user.photoURL} 
-                alt={user.displayName} 
-                className="h-10 w-10 rounded-full" 
-              />
-              <button 
-                onClick={handleSignOut}
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-5 rounded-lg text-lg transition duration-300"
-              >
-                Sign Out
+            // If user is logged in
+            <>
+              <Link to="/dashboard" className={styles.navLink}>
+                Dashboard
+              </Link>
+              <button onClick={handleLogout} className={styles.logoutButton}>
+                Logout
               </button>
-            </div>
+            </>
           ) : (
-            <div className="flex items-center space-x-6">
-              <button onClick={handleGoogleSignIn} className="text-lg text-gray-300 hover:text-white">
+            // If user is logged out
+            <>
+              <Link to="/auth" className={styles.navLink}>
                 Login
-              </button>
-              <button 
-                onClick={handleGoogleSignIn}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-lg text-lg transition duration-300"
-              >
+              </Link>
+              <Link to="/auth" className={styles.signUpButton}>
                 Sign Up
-              </button>
-            </div>
+              </Link>
+            </>
           )}
         </div>
       </div>
@@ -99,4 +70,3 @@ const Navbar = ({ user }) => {
 };
 
 export default Navbar;
-

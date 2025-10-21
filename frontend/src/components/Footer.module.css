@@ -1,0 +1,65 @@
+.footer {
+    background-color: #020617; /* bg-slate-950 */
+    border-top: 1px solid #334155; /* border-t border-slate-700/50 */
+    padding: 3rem 0 2rem 0; /* pt-12 pb-8 */
+  }
+  
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    
+    /* Flexbox setup */
+    display: flex;
+    flex-direction: column; /* Default: stacked */
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* On medium screens, switch to side-by-side */
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row; /* md:flex-row */
+    }
+  }
+  
+  .brandInfo {
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .brandInfo {
+      text-align: left;
+    }
+  }
+  
+  .brandName {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    background-image: linear-gradient(to right, #60A5FA, #8B5CF6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .copyright {
+    color: #64748B; /* text-slate-400 */
+    margin-top: 0.5rem;
+  }
+  
+  .footerLinks {
+    display: flex;
+    gap: 1.5rem; /* space-x-6 */
+  }
+  
+  .link {
+    color: #64748B; /* text-slate-400 */
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .link:hover {
+    color: #FFF;
+    text-decoration: none;
+  }

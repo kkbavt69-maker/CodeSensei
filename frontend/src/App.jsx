@@ -1,21 +1,32 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import AboutUs from './components/AboutUs';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Auth from './pages/Auth';
+import Dashboard from './pages/Dashboard';
+import CodeReview from './pages/CodeReview';
+import Learn from './pages/Learn';
+import BugTester from './pages/bugTester'; 
+import CodeOptimizer from './pages/codeOptimizer'; // 1. Import the new page
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900">
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
-        <AboutUs />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        {/* Route for authentication page (no Navbar/Footer) */}
+        <Route path="/auth" element={<Auth />} />
+
+        {/* Routes that use the main Layout (with Navbar/Footer) */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/code-review" element={<CodeReview />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/bug-tester" element={<BugTester />} />
+          <Route path="/codeOptimizer" element={<CodeOptimizer />} /> {/* 2. Add the route */}
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

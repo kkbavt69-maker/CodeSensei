@@ -1,15 +1,16 @@
 import React from 'react';
+import styles from './Features.module.css'; // Import the styles
 
 // Feature Card Component
 const FeatureCard = ({ imgName, title, description }) => (
-  <div className="bg-gray-800 p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+  <div className={styles.featureCard}>
     <img 
       src={`/src/assets/${imgName}`} 
       alt={`${title} icon`} 
-      className="h-20 w-20 mx-auto mb-6" 
+      className={styles.cardImage} 
     />
-    <h3 className="text-2xl font-semibold mb-3 text-center">{title}</h3>
-    <p className="text-gray-400 text-center">
+    <h3 className={styles.cardTitle}>{title}</h3>
+    <p className={styles.cardDescription}>
       {description}
     </p>
   </div>
@@ -17,12 +18,14 @@ const FeatureCard = ({ imgName, title, description }) => (
 
 const Features = () => {
   return (
-    <section className="py-20 bg-gray-800/50">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16">
-          Powerful Features, Simplified
+    <section className={styles.featuresSection}>
+      <div className={styles.container}>
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.titleGradient}>
+            Powerful Features, Simplified
+          </span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className={styles.featuresGrid}>
           <FeatureCard 
             imgName="feature-review.png"
             title="AI Code Review"
